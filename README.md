@@ -3,6 +3,10 @@ Application for Shopify Internship
 
 I was gonna use cookies for the cart but I didnt
 
+**Live Version** - <a href="http://198.50.245.94:1111/">http://198.50.245.94:1111/</a>
+
+-- Alex Zidros
+
 <br>
 <br>
 <br>
