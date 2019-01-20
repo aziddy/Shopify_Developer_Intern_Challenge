@@ -1,11 +1,27 @@
 # Shopify_Developer_Intern_Challenge
-Application for Shopify Internship
+Application for Shopify Internship - <a href="https://docs.google.com/document/d/1J49NAOIoWYOumaoQCKopPfudWI_jsQWVKlXmw1f1r-4/preview?ts=5c2fd489">HERE</a>
 
-I was gonna use cookies for the cart but I didnt
 
 **Live Version** - <a href="http://198.50.245.94:1111/">http://198.50.245.94:1111/</a>
 
 -- Alex Zidros
+
+<br>
+<br>
+
+
+## Thought Process
+
+Legit saw the application the night before it was due. So I scrambled to setup a database table following the structure (title, price, inventory_count) and I also added a unique id attribute to make life easier when scrubbing through the DB queries. 
+
+I decided on Node with the web framework Express because I familiar with it from previous projects.
+
+I got all scrambled about the Shopping Cart part because I was thinking of how I should implement it. Cookies? Sessions? I decide just to go with a JSON obj in Frontend Javascript that stored the cart. Thinking I’m not making a full site that needs that data persistence between pages.
+
+Then there's the /fetch_all & /fetch_all_products that are pretty trival
+
+The biggest time consumer was the /purchase_cart because of the idea that every product in the cart has to be confirmed in the database with the right quantity in stock before purchased
+
 
 <br>
 <br>
