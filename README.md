@@ -182,6 +182,8 @@ Table - **shopify_items**
   ERROR:'Not enough of SNES Classic'
 } 
 ```
+<br>
+<br>
 
 # SQL Creds File thats not in the Github Repo
 ### /routes/sql_creds.js
@@ -189,8 +191,8 @@ Table - **shopify_items**
 ```
 module.exports = {
 		host : 'localhost',
-		user : 'fake_username',
-		password : 'fake_pw',
+		user : '-----',
+		password : '-------',
 		database : 'test',
 		multipleStatements: true
 }
