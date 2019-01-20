@@ -189,8 +189,8 @@ Table - **shopify_items**
 ```
 module.exports = {
 		host : 'localhost',
-		user : 'username',
-		password : 'pw',
+		user : 'fake_username',
+		password : 'fake_pw',
 		database : 'test',
 		multipleStatements: true
 }
