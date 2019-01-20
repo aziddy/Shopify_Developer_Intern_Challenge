@@ -183,5 +183,18 @@ Table - **shopify_items**
 } 
 ```
 
+# SQL Creds File thats not in the Github Repo
+### /routes/sql_creds.js
+
+```
+module.exports = {
+		host : 'localhost',
+		user : 'username',
+		password : 'pw',
+		database : 'test',
+		multipleStatements: true
+}
+
+```
 
 
