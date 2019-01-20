@@ -1,0 +1,155 @@
+<html>
+	
+<header>
+</header>
+
+<body>
+	<a href="/"><button style="width:400px;height:25px" type="button">Go Back</button><a>
+	<br>
+	<br>
+	<button style="width:100px;height:50px" type="button" onclick="addProductThatDoesntExist()">Add Product That Does't Exist</button>
+	<br>
+	<br>
+	<div id="cart_form" action="/action_page.php" method="get">
+	
+	</div>
+	<br>
+	<button style="width:100px;height:50px" onclick="make_cart()">Make Cart</button>
+	<br>
+	<br>
+	<button style="width:100px;height:50px" type="button" onclick="clearCart()">Clear Cart</button>
+	<br>
+	<br>
+	
+	<br>
+	<b style="position: relative; display:inline-block">RESPONSE:&nbsp;&nbsp;</b><div style="position: relative; display:inline-block" id="response">null</div>
+	<br>
+	<br>
+	<b style="position: relative; display:inline-block">Cart_JSON:&nbsp;&nbsp;</b><div style="position: relative; display:inline-block" id="cart_JSON">null</div>
+	<br>
+	<br>
+	<br>
+	<b style="position: relative; display:inline-block">Total Cart Value:&nbsp;&nbsp;$</b><div style="position: relative; display:inline-block" id="cart_value">null</div>
+	<br>
+	<br>
+	<button style="width:200px;height:50px" type="button" onclick="purchase_cart()">Complete/Purchase Cart</button>
+	<script>
+		
+		
+	var cart_JSON = "";
+		
+	var http = new XMLHttpRequest();
+	
+	http.onreadystatechange = function() { 
+		if (http.readyState == 4 && http.status == 200){
+			document.getElementById("response").innerHTML = http.responseText;
+			var parsed = JSON.parse( http.responseText );
+			//document.getElementById("response").innerHTML = parsed[0]["title"];
+			
+			for(var x = 0; x < parsed.length; x++){
+				document.getElementById("cart_form").innerHTML = document.getElementById("cart_form").innerHTML + '<input class="product" data-price="'+parsed[x]["price"]+'" data type="number" placeholder="quantity" name="'+parsed[x]["id"]+'">'+parsed[x]["title"]+" <b>$"+parsed[x]["price"]+"</b> ("+parsed[x]["inventory_count"]+")"+'<br>';
+			}
+			
+			
+			
+		}
+	}
+
+	http.open("POST", "fetch_all_products", true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("");
+	
+	
+	function addProductThatDoesntExist(){
+		document.getElementById("cart_form").innerHTML = document.getElementById("cart_form").innerHTML + '<input style="background-color:red;" class="product" data-price="'+30+'" data type="number" placeholder="quantity" name="'+"98989389892839"+'">'+"Mars Rover"+" <b>$"+"30"+"</b> ("+"3000"+")"+'<br>';		
+	}
+	
+	
+	function clearCart(){
+		cart_JSON = "";
+		document.getElementById("cart_value").innerHTML = "null";
+		document.getElementById("cart_JSON").innerHTML = "null";
+		
+		var b = document.getElementsByClassName("product");
+		
+		for (i = 0; i < b.length; i++) {
+			b[i].value = 0;	
+		}
+		
+	}
+		
+	
+	function make_cart() {
+		
+		var total_cart_price = 0;
+		
+		var b = document.getElementsByClassName("product");
+		var i;
+		var temp_cart = new Array();
+		
+		for (i = 0; i < b.length; i++) {
+			
+			console.log(b[i].getAttribute('data-price'));
+			
+			var temp_quantity_value = b[i].value;
+			temp_quantity_value = parseInt(b[i].value, 10);
+			// check if quantity its a value
+			if(isNaN(temp_quantity_value)) {
+				
+				temp_quantity_value = 0;
+				
+		}
+			
+			total_cart_price = total_cart_price + temp_quantity_value*parseInt(b[i].getAttribute('data-price'), 10);
+			
+			temp_cart.push({id:b[i].getAttribute('name'), price:b[i].getAttribute('data-price'), quantity:temp_quantity_value});
+		}
+		console.log(temp_cart);
+		console.log(total_cart_price);
+		
+		cart_JSON = JSON.stringify(temp_cart);
+		
+		document.getElementById("cart_JSON").innerHTML = cart_JSON;
+		
+		document.getElementById("cart_value").innerHTML = total_cart_price;
+		
+		
+	}
+	
+	
+	
+	
+	
+	function purchase_cart() {
+		alert("purchase");
+		var http = new XMLHttpRequest();
+		
+		http.onreadystatechange = function() { 
+			if (http.readyState == 4 && http.status == 200){
+				console.log(http.responseText);
+				document.getElementById("response").innerHTML = http.responseText;		
+			}
+		}
+
+		http.open("POST", "purchase_cart", true);
+		http.setRequestHeader("Content-type", "application/json");
+		http.send(cart_JSON);
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	</script>
+
+
+</body>
+
+<footer>
+</footer>
+
+
+</html>

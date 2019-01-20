@@ -1,3 +1,5 @@
+routes/sql_creds.js
+
 # Logs
 logs
 *.log
