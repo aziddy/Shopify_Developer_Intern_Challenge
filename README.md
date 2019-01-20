@@ -153,23 +153,28 @@ Table - **shopify_items**
 | cost |  Float |  Price of the Product |
 
 
-**Sample Response**
+** Good Sample Response**
 
 ```
-[
-  {
-    "title":"Yeezy Boost 350",
-    "price":300,
-    "inventory_count":14,
-    "id":2356325
-  },
-  {
-    "title":"Macbook Pro",
-    "price":1700,
-    "inventory_count":135,
-    "id":13572
-    }
- ]
+{
+  "status":"Good Purchase!",
+  "cost":1700
+} 
 ```
+
+# Error Responses - *JSON*
+| Name | Type | Description 
+| ------------- | ---------- | ------------- |
+| ERROR |  String |  Description of Error |
+
+** Error Sample Response**
+
+
+```
+{
+  ERROR:'Not enough of SNES Classic'
+} 
+```
+
 
 
