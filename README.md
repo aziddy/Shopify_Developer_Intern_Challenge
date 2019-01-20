@@ -153,7 +153,7 @@ Table - **shopify_items**
 | cost |  Float |  Price of the Product |
 
 
-** Good Sample Response**
+**Sample Response**
 
 ```
 {
@@ -162,12 +162,15 @@ Table - **shopify_items**
 } 
 ```
 
+<br>
+<br>
+
 # Error Responses - *JSON*
 | Name | Type | Description 
 | ------------- | ---------- | ------------- |
 | ERROR |  String |  Description of Error |
 
-** Error Sample Response**
+**Error Sample Response**
 
 
 ```
