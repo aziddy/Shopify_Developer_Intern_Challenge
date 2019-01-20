@@ -18,9 +18,9 @@ I decided on Node with the web framework Express because I familiar with it from
 
 I got all scrambled about the Shopping Cart part because I was thinking of how I should implement it. Cookies? Sessions? I decide just to go with a JSON obj in Frontend Javascript that stored the cart. Thinking I’m not making a full site that needs that data persistence between pages.
 
-Then there's the /fetch_all & /fetch_all_products that are pretty trival
+Then there's the **/fetch_product** & **/fetch_all_products** that are pretty trival
 
-The biggest time consumer was the /purchase_cart because of the idea that every product in the cart has to be confirmed in the database with the right quantity in stock before purchased
+The biggest time consumer was the **/purchase_cart** because of the idea that every product in the cart has to be confirmed in the database with the right quantity in stock before purchased
 
 
 <br>
